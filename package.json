@@ -1,0 +1,38 @@
+{
+  "name": "population_transition_graph",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "start": "webpack-cli serve --hot --mode development",
+    "watch": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ken2pg/Population_transition_graph.git"
+  },
+  "author": "ken2pg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ken2pg/Population_transition_graph/issues"
+  },
+  "homepage": "https://github.com/ken2pg/Population_transition_graph#readme",
+  "devDependencies": {
+    "ts-loader": "^9.2.2",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "@reactchartjs/react-chart.js": "^1.0.0-rc.2",
+    "@types/react": "^17.0.9",
+    "@types/react-dom": "^17.0.6",
+    "@types/recharts": "^1.8.19",
+    "chart.js": "^3.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "recharts": "^2.0.9"
+  }
+}
