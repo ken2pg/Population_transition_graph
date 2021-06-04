@@ -2,7 +2,8 @@
 
 ## 動作確認方法
 
-0 RESAS サイトで登録を行い、シークレットキーを取得する。
+0 RESAS サイトで登録を行い、シークレットキーを取得する。<br/>
+https://opendata.resas-portal.go.jp/
 
 1 クローンを行う。<br/>
 ` $ git clone -b feature/feature1 https://github.com/ken2pg/Population_transition_graph`
@@ -17,4 +18,4 @@
 `HEADERREQUEST = 'シークレットKey'`
 
 5 下記コマンドでローカルサーバーの立ち上げる<br/>
-`npm run start`
+`$ npm run start`
