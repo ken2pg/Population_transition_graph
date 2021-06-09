@@ -12,6 +12,8 @@ interface Props {
     setDisplayData: (setData: data) => void;
     data: data;
     setData: (setData: data) => void;
+    setCheckPopulationData: (number: number) => void;
+    getLabel: (num: number) => string;
 }
 
 export const CheckboxComponent: React.FC<Props> = ({
@@ -23,14 +25,29 @@ export const CheckboxComponent: React.FC<Props> = ({
     setDisplayData,
     data,
     setData,
+    setCheckPopulationData,
+    getLabel,
 }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        //チェックボックスの数字がすでにリストに含まれる場合、チェックを外す(リストから除外する)
+        //またdataから外した都道府県のグラフを表示させないために、該当のデータを削除
         if (checkbox.includes(Number(e.target.value))) {
             setCheckbox(
                 checkbox.filter((item) => item !== Number(e.target.value))
             );
+            setData(
+                data.map((dataItem) =>
+                    dataItem.label === getLabel(Number(e.target.value))
+                        ? { ...dataItem, fill: false }
+                        : dataItem
+                )
+            );
+
+            //リストに含まれない場合、リストにチェックボックス番号を渡しgetPopulationData関数を呼び出す。
+            //stateの更新よりもcallApiが呼ばれる方が早いため、checkboxの更新前の値と渡されたvalueをcallApiに渡す
         } else {
             setCheckbox([...checkbox, Number(e.target.value)]);
+            setCheckPopulationData(Number(e.target.value));
         }
     };
 
@@ -38,7 +55,7 @@ export const CheckboxComponent: React.FC<Props> = ({
         <div>
             {prefectureCode.map((p, i) => {
                 return (
-                    <div key={i}>
+                    <div key={i} className="Checkbox_div">
                         <input
                             type="checkbox"
                             value={p.prefCode}
