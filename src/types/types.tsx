@@ -1,6 +1,6 @@
-export type prefectureList = { prefCode: number; prefName: string }[];
+export type prefectureListType = { prefCode: number; prefName: string }[];
 
-export type data = {
+export type dataType = {
     label: string;
     data: number[];
     isDisplay: boolean;
