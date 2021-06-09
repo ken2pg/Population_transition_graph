@@ -9,7 +9,7 @@ module.exports = {
         filename: 'index.js',
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json'],
+        extensions: ['.ts', '.tsx', '.js', '.json', '.css'],
     },
     devServer: {
         contentBase: path.join(__dirname, 'public'),
@@ -26,6 +26,10 @@ module.exports = {
             {
                 test: /\.(png|jpg)$/i,
                 loader: 'url-loader',
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
             },
         ],
     },
