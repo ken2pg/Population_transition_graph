@@ -7,6 +7,7 @@
     width: 700px;
     margin: 0 auto;
 }
+
 /*Checkbox Component CSS*/
 .CheckboxComponent_div {
     width: 90%;
@@ -24,7 +25,22 @@
     margin: 0 auto;
 }
 
-@media screen and (max-width: 780px) {
+.GraphComponent_div_mobile {
+    display: none;
+    width: 700px;
+}
+
+@media screen and (max-width: 540px) {
+    .GraphComponent_div {
+        display: none;
+    }
+    .GraphComponent_div_mobile {
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
     .App_div {
         width: 100%;
         margin: 0 auto;

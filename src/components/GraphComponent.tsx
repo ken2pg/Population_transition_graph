@@ -1,46 +1,28 @@
 import * as React from 'react';
-import { getPopulationData } from 'src/api/requestResas';
-import { prefectureList, data } from '../types/types';
 import { Line } from 'react-chartjs-2';
+import { dataType } from '../types/types';
 import '../css/style.css';
 
 interface Props {
-    checkbox: number[];
-    setCheckbox: (setCheckbox: number[]) => void;
-    prefectureCode: prefectureList;
-    setPrefectureCode: (setPrefectureList: prefectureList) => void;
-    displayData: data;
-    setDisplayData: (setData: data) => void;
-    data: data;
-    setData: (setData: data) => void;
+    data: dataType;
 }
 
-export const GraphComponent: React.FC<Props> = ({
-    checkbox,
-    setCheckbox,
-    prefectureCode,
-    setPrefectureCode,
-    displayData,
-    setDisplayData,
-    data,
-    setData,
-}) => {
-    //表示するデータの取得
+const GraphComponent: React.FC<Props> = ({ data }) => {
+    // 表示するデータの取得
     const tempData = data
         .filter((dataItem) => {
-            if (dataItem.fill) {
-                return dataItem;
+            if (dataItem.isDisplay) {
+                return true;
             }
+            return false;
         })
-        .map((dataItem) => {
-            return {
-                label: dataItem.label,
-                data: dataItem.data,
-                fill: false,
-                backgroundColor: dataItem.backgroundColor,
-                borderColor: dataItem.borderColor,
-            };
-        });
+        .map((dataItem) => ({
+            label: dataItem.label,
+            data: dataItem.data,
+            fill: false,
+            backgroundColor: dataItem.backgroundColor,
+            borderColor: dataItem.borderColor,
+        }));
     const dataSet: {
         labels: number[];
         datasets: {
@@ -58,7 +40,7 @@ export const GraphComponent: React.FC<Props> = ({
         datasets: tempData,
     };
 
-    //グラフの軸オプション
+    // グラフの軸オプション
     const options = {
         responsive: true,
 
@@ -86,8 +68,15 @@ export const GraphComponent: React.FC<Props> = ({
         },
     };
     return (
-        <div className="GraphComponent_div">
-            <Line data={dataSet} options={options} height="250" />
-        </div>
+        <>
+            <div className="GraphComponent_div">
+                <Line data={dataSet} options={options} height="200" />
+            </div>
+            <div className="GraphComponent_div_mobile">
+                <Line data={dataSet} options={options} height="250" />
+            </div>
+        </>
     );
 };
+
+export default GraphComponent;
