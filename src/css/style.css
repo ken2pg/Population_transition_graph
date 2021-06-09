@@ -1,9 +1,38 @@
+/*App Component CSS*/
+.App_h2 {
+    text-align: center;
+}
+
+.App_div {
+    width: 700px;
+    margin: 0 auto;
+}
 /*Checkbox Component CSS*/
+.CheckboxComponent_div {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .Checkbox_div {
     display: inline-block;
+    margin-right: 0 auto;
 }
 
 /*Graph Component CSS*/
 .GraphComponent_div {
-    width: 100%;
+    width: 700px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 780px) {
+    .App_div {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .CheckboxComponent_div {
+        width: 100%;
+    }
+    .GraphComponent_div {
+        width: 100%;
+    }
 }
