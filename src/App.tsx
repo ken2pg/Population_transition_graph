@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { getPopulationData, getPrefectureCodes } from './api/requestResas';
 import { CheckboxComponent } from './components/CheckboxComponent';
-import { GraphComponent } from './components/GraphComponent';
-import { prefectureList, data } from './types/types';
+import GraphComponent from './components/GraphComponent';
+import { prefectureListType, dataType } from './types/types';
 import './css/style.css';
 
-export const App = () => {
+const App: React.FC = () => {
     const [prefectureCodes, setPrefectureCodes] =
-        React.useState<prefectureList>([]);
-    const [data, setData] = React.useState<data>([]);
+        React.useState<prefectureListType>([]);
+    const [data, setData] = React.useState<dataType>([]);
     const [checkbox, setCheckbox] = React.useState<number[]>([]);
 
     const setPopulationData = async (idx: number) => {
@@ -29,35 +29,35 @@ export const App = () => {
         const label = prefectureCodes.map((prefNum) => {
             if (prefNum.prefCode === num) {
                 return prefNum.prefName;
-            } else {
-                return '';
             }
+            return '';
         });
-        //都道府県labelは1つしかないのでlabel[num-1]を返す。
-        //ex. 北海道の場合、["北海道","",""...]のようになっている。
+        // 都道府県labelは1つしかないのでlabel[num-1]を返す。
+        // ex. 北海道の場合、["北海道","",""...]のようになっている。
         return label[num - 1];
     };
 
     const checkIncludePopulationData = (number: number) => {
-        //都道府県コードに対応する都道府県を取得
+        // 都道府県コードに対応する都道府県を取得
         const label: string = getLabel(number);
         let isThereLabel = false;
 
-        //もしlabelが存在する場合、isDisplay(表示するかどうか)にtrueをチェック
-        setData((data) =>
-            data.map((item) =>
+        // もしlabelが存在する場合、isDisplay(表示するかどうか)にtrueをチェック
+        setData((dataItem) =>
+            dataItem.map((item) =>
                 item.label === label ? { ...item, isDisplay: true } : item
             )
         );
 
-        //すでにデータを取得済みの場合、isThereLabelをtrueにして、Apiでもう一度取得しない
+        // すでにデータを取得済みの場合、isThereLabelをtrueにして、Apiでもう一度取得しない
         data.map((item) => {
             if (item.label === label) {
                 isThereLabel = true;
             }
+            return true;
         });
 
-        //チェックボックスにチェックが入っており、まだ取得していない場合はApiで取得
+        // チェックボックスにチェックが入っており、まだ取得していない場合はApiで取得
         if (!isThereLabel) {
             setPopulationData(number);
         }
@@ -65,7 +65,7 @@ export const App = () => {
 
     React.useEffect(() => {
         getPrefectureCodes(setPrefectureCodes);
-    }, [0]);
+    }, []);
 
     return (
         <div className="App_div">
@@ -83,3 +83,5 @@ export const App = () => {
         </div>
     );
 };
+
+export default App;

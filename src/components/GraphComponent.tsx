@@ -1,30 +1,28 @@
 import * as React from 'react';
-import { getPopulationData } from 'src/api/requestResas';
-import { prefectureList, data } from '../types/types';
 import { Line } from 'react-chartjs-2';
+import { dataType } from '../types/types';
 import '../css/style.css';
 
 interface Props {
-    data: data;
+    data: dataType;
 }
 
-export const GraphComponent: React.FC<Props> = ({ data }) => {
-    //表示するデータの取得
+const GraphComponent: React.FC<Props> = ({ data }) => {
+    // 表示するデータの取得
     const tempData = data
         .filter((dataItem) => {
             if (dataItem.isDisplay) {
-                return dataItem;
+                return true;
             }
+            return false;
         })
-        .map((dataItem) => {
-            return {
-                label: dataItem.label,
-                data: dataItem.data,
-                fill: false,
-                backgroundColor: dataItem.backgroundColor,
-                borderColor: dataItem.borderColor,
-            };
-        });
+        .map((dataItem) => ({
+            label: dataItem.label,
+            data: dataItem.data,
+            fill: false,
+            backgroundColor: dataItem.backgroundColor,
+            borderColor: dataItem.borderColor,
+        }));
     const dataSet: {
         labels: number[];
         datasets: {
@@ -42,7 +40,7 @@ export const GraphComponent: React.FC<Props> = ({ data }) => {
         datasets: tempData,
     };
 
-    //グラフの軸オプション
+    // グラフの軸オプション
     const options = {
         responsive: true,
 
@@ -80,3 +78,5 @@ export const GraphComponent: React.FC<Props> = ({ data }) => {
         </>
     );
 };
+
+export default GraphComponent;
