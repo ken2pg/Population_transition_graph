@@ -5,30 +5,14 @@ import { Line } from 'react-chartjs-2';
 import '../css/style.css';
 
 interface Props {
-    checkbox: number[];
-    setCheckbox: (setCheckbox: number[]) => void;
-    prefectureCode: prefectureList;
-    setPrefectureCode: (setPrefectureList: prefectureList) => void;
-    displayData: data;
-    setDisplayData: (setData: data) => void;
     data: data;
-    setData: (setData: data) => void;
 }
 
-export const GraphComponent: React.FC<Props> = ({
-    checkbox,
-    setCheckbox,
-    prefectureCode,
-    setPrefectureCode,
-    displayData,
-    setDisplayData,
-    data,
-    setData,
-}) => {
+export const GraphComponent: React.FC<Props> = ({ data }) => {
     //表示するデータの取得
     const tempData = data
         .filter((dataItem) => {
-            if (dataItem.fill) {
+            if (dataItem.isDisplay) {
                 return dataItem;
             }
         })
