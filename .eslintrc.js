@@ -5,10 +5,11 @@ module.exports = {
     node: true,
   },
   extends: [
+    //eslintが適用されなくなるものに関してはコメントアウトしている
     'plugin:react/recommended',
     'airbnb',
     'prettier',
-    'prettier/@typescript-eslint',
+    // 'prettier/@typescript-eslint',
     'airbnb/hooks',
     'plugin:import/errors',
     'plugin:import/warnings',
