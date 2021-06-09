@@ -4,7 +4,6 @@ const requestURL =
     'https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=';
 const headerRequest: string = process.env.HEADERREQUEST;
 const prefectureList: prefectureList = [{ prefCode: 0, prefName: '' }];
-const value: number[] = [];
 const hslColorList: { h: number; s: number; l: number }[] = [];
 
 //hslカラーリストを作成する,48の異なる色になるようにhslのカラーリストが含まれる
@@ -31,16 +30,19 @@ export const getPrefectureCodes = async (
             throw new Error(err.message);
         });
         const json = await res.json();
-        await console.log(json);
         await setPrefectureCodes(json.result);
     } catch (err) {
         console.log(err);
     }
 };
 
-export const getPopulationData = async (prefCode: number) => {
+export const getPopulationData = async (
+    prefCode: number,
+    prefectureList: prefectureList
+) => {
+    const value: number[] = [];
     try {
-        const res = await fetch(requestURL + prefCode, {
+        const res = await fetch(requestURL + prefCode.toString(), {
             headers: {
                 'X-API-KEY': headerRequest,
             },
@@ -56,11 +58,10 @@ export const getPopulationData = async (prefCode: number) => {
             ls.value /= 10000;
             value.push(ls.value);
         });
-
         //都道府県コード、人口数、チェックボックスにチェックが入っているか、背景カラー、
         //ボーダーカラーの情報が含まれたオブジェクトを生成し返す
         const prefData = await {
-            label: prefectureList[0].prefName,
+            label: prefectureList[prefCode - 1].prefName,
             data: value,
             isChecked: false,
             backgroundColor: `hsl(${hslColorList[prefCode - 1]['h']}, ${
@@ -70,6 +71,7 @@ export const getPopulationData = async (prefCode: number) => {
                 hslColorList[prefCode - 1]['s']
             }%, ${hslColorList[prefCode - 1]['l']}%)`,
         };
+        console.log('success');
         return await prefData;
     } catch (error) {
         await console.log(error);
