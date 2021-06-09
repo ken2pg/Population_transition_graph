@@ -63,7 +63,7 @@ export const getPopulationData = async (
         const prefData = await {
             label: prefectureList[prefCode - 1].prefName,
             data: value,
-            isChecked: false,
+            isDisplay: true,
             backgroundColor: `hsl(${hslColorList[prefCode - 1]['h']}, ${
                 hslColorList[prefCode - 1]['s']
             }%, ${hslColorList[prefCode - 1]['l']}%)`,
