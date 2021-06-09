@@ -86,8 +86,13 @@ export const GraphComponent: React.FC<Props> = ({
         },
     };
     return (
-        <div className="GraphComponent_div">
-            <Line data={dataSet} options={options} height="250" />
-        </div>
+        <>
+            <div className="GraphComponent_div">
+                <Line data={dataSet} options={options} height="200" />
+            </div>
+            <div className="GraphComponent_div_mobile">
+                <Line data={dataSet} options={options} height="250" />
+            </div>
+        </>
     );
 };
