@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getPopulationData } from 'src/api/requestResas';
 import { prefectureList, data } from '../types/types';
-import '../css/CheckboxComponent.css';
+import '../css/style.css';
 
 interface Props {
     checkbox: number[];
@@ -52,7 +52,7 @@ export const CheckboxComponent: React.FC<Props> = ({
     };
 
     return (
-        <div>
+        <div className="CheckboxComponent_div">
             {prefectureCode.map((p, i) => {
                 return (
                     <div key={i} className="Checkbox_div">
@@ -62,7 +62,9 @@ export const CheckboxComponent: React.FC<Props> = ({
                             onChange={handleChange}
                             checked={checkbox.includes(p.prefCode)}
                         />
-                        {p.prefName}
+                        {/* チェックボックスを整えるための処理 */}
+                        {p.prefName.length === 3 && p.prefName + '　'}
+                        {p.prefName.length === 4 && p.prefName}
                     </div>
                 );
             })}
