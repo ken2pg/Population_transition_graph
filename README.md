@@ -6,7 +6,7 @@
 https://opendata.resas-portal.go.jp/
 
 1 クローンを行う。<br/>
-` $ git clone -b feature/feature1 https://github.com/ken2pg/Population_transition_graph`
+` $ git clone -b feature/feature2 https://github.com/ken2pg/Population_transition_graph`
 
 2 ディレクトリを変更<br/>
 ` $ cd Population_transition_graph`
@@ -17,5 +17,5 @@ https://opendata.resas-portal.go.jp/
 4 .env ファイルを webpack.config.js ファイルと同じ階層に作成して、RESAS API のシークレット Key を記述<br/>
 `HEADERREQUEST = 'シークレットKey'`
 
-5 下記コマンドでローカルサーバーの立ち上げる<br/>
+5 下記コマンドでローカルサーバーを立ち上げる<br/>
 `$ npm run start`
