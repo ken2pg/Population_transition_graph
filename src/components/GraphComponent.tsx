@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getPopulationData } from 'src/api/requestResas';
 import { prefectureList, data } from '../types/types';
 import { Line } from 'react-chartjs-2';
-import '../css/GraphComponent.css';
+import '../css/style.css';
 
 interface Props {
     checkbox: number[];
@@ -57,47 +57,37 @@ export const GraphComponent: React.FC<Props> = ({
         ],
         datasets: tempData,
     };
+
     //グラフの軸オプション
     const options = {
+        responsive: true,
+
+        plugins: {
+            title: {
+                display: true,
+                text: '',
+            },
+        },
         scales: {
-            xAxes: [
-                {
-                    fontSize: 14,
-                    scaleLabel: {
-                        display: true,
-                        labelString: '年度',
-                        fontSize: 16,
-                    },
-                    ticks: {
-                        fontSize: 14,
-                    },
-                },
-            ],
-            yAxes: [
-                {
-                    type: 'line',
+            x: {
+                title: {
                     display: true,
-                    position: 'left',
-                    id: 'y-axis-1',
-                    scaleLabel: {
-                        display: true,
-                        labelString: '万人',
-                        fontSize: 16,
-                    },
-                    ticks: {
-                        fontSize: 14,
-                    },
+                    text: '年度',
                 },
-            ],
+            },
+            y: {
+                min: 0,
+                max: 1400,
+                title: {
+                    display: true,
+                    text: '人口数(万人)',
+                },
+            },
         },
     };
-
-    // console.log(dataSet);
-
-    // const options = {};
     return (
         <div className="GraphComponent_div">
-            <Line data={dataSet} options={options} />
+            <Line data={dataSet} options={options} height="250" />
         </div>
     );
 };

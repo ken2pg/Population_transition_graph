@@ -6,7 +6,7 @@
 https://opendata.resas-portal.go.jp/
 
 1 クローンを行う。<br/>
-` $ git clone -b feature/feature2 https://github.com/ken2pg/Population_transition_graph`
+` $ git clone -b feature/feature3 https://github.com/ken2pg/Population_transition_graph`
 
 2 ディレクトリを変更<br/>
 ` $ cd Population_transition_graph`
