@@ -3,6 +3,7 @@ import { getPopulationData, getPrefectureCodes } from './api/requestResas';
 import { CheckboxComponent } from './components/CheckboxComponent';
 import { GraphComponent } from './components/GraphComponent';
 import { prefectureList, data } from './types/types';
+import './css/style.css';
 
 export const App = () => {
     const [prefectureCodes, setPrefectureCodes] =
@@ -66,8 +67,8 @@ export const App = () => {
         getPrefectureCodes(setPrefectureCodes);
     }, [0]);
     return (
-        <>
-            <h2>人口推移グラフ</h2>
+        <div className="App_div">
+            <h2 className="App_h2">人口推移グラフ</h2>
             <CheckboxComponent
                 checkbox={checkbox}
                 setCheckbox={setCheckbox}
@@ -90,6 +91,6 @@ export const App = () => {
                 data={data}
                 setData={setData}
             />
-        </>
+        </div>
     );
 };
