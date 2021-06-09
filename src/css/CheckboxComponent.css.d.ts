@@ -1,1 +1,1 @@
-export const div: string;
+export const Checkbox_div: string;
