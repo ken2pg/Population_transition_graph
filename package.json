@@ -7,7 +7,7 @@
     "build": "webpack --mode=production",
     "start": "webpack-cli serve --hot --mode development",
     "watch": "webpack --watch --mode=development",
-    "fmt": "prettier --write ./src && eslint ./src"
+    "fmt": "prettier --write ./src"
   },
   "repository": {
     "type": "git",
