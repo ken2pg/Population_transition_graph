@@ -1,0 +1,6 @@
+build/
+public/
+**/node_modules/
+*.config.js
+style.css.d.ts
+/.eslintrc.js
