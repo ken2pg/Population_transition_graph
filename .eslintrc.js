@@ -5,18 +5,15 @@ module.exports = {
     node: true,
   },
   extends: [
-    //eslintが適用されなくなるものに関してはコメントアウトしている
     'plugin:react/recommended',
     'airbnb',
     'prettier',
-    // 'prettier/@typescript-eslint',
     'airbnb/hooks',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    // 'plugin:@typescript-eslint/recommended-requring-type-checking',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -33,8 +30,6 @@ module.exports = {
   rules: {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
-    // should be rewritten as `['error', { allowAsStatement: true }]` in ESLint 7 or later
-    // SEE: https://github.com/typescript-eslint/typescript-eslint/issues/1184
     'no-void': ['error', { allowAsStatement: true }],
     '@typescript-eslint/no-unused-vars': [
       'error',
