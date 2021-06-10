@@ -1,4 +1,13 @@
-# Population_transition_graph
+# 各都道府県の人口推移グラフ
+
+## 概要
+各都道府県の人口推移をグラフで表示するサイト
+
+## サイトURL
+
+## 環境
+- node 14.17.0
+- npm 6.14.9
 
 ## 動作確認方法
 
@@ -6,7 +15,7 @@
 https://opendata.resas-portal.go.jp/
 
 1 クローンを行う。<br/>
-` $ git clone -b feature/feature4 https://github.com/ken2pg/Population_transition_graph`
+` $ git clone https://github.com/ken2pg/Population_transition_graph`
 
 2 ディレクトリを変更<br/>
 ` $ cd Population_transition_graph`
@@ -19,3 +28,8 @@ https://opendata.resas-portal.go.jp/
 
 5 下記コマンドでローカルサーバーを立ち上げる<br/>
 `$ npm run start`
+
+
+
+## デモ
+<img src=".\static\Videotogif.gif">
